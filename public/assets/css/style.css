@@ -1,0 +1,70 @@
+body {
+    background-color: #202225;
+    color: #dddddd;
+    font-family: Arial, sans-serif;
+}
+.navbar {
+    margin-bottom: 30px;
+
+}
+
+.nav-link{
+    color: #dddddd;
+}
+.content {
+    margin-top: 30px;
+}
+h1, h2, h3 {
+    color: #dddddd;
+    font-weight: bold;
+}
+h1 {
+    font-size: 2.5rem;
+}
+h2 {
+    font-size: 2rem;
+    margin-top: 20px;
+}
+h3 {
+    font-size: 1.75rem;
+    margin-top: 15px;
+}
+hr{
+    color: #ffffff;
+}
+p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+}
+img {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 20px;
+}
+.footer {
+    margin-top: 40px;
+    padding: 20px 0;
+    text-align: center;
+    background-color: #343a40;
+    color: white;
+}
+
+.nav-active {
+    font-weight: bold;
+    background-color: #dddddd;
+    color: #dddddd; /* Active link color */
+}
+.myLink.clicked{
+    font-weight: bold;
+    background-color: #353440;
+    color: #0ccb5f; /* Active link color */
+}
+.myLink.inView{
+    /* background-color: #353440; */
+
+    font-weight:bold;
+    color: #dddddd; /* Active link color */
+}
+.section{
+    margin-bottom: 80px;
+}
