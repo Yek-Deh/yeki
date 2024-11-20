@@ -1,10 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-
-@include('layouts.header')
-<body class="container">
-@include('layouts.navbar')
-@include('layouts.content')
-@include('layouts.footer')
-</body>
-</html>
+<x-yeki-layout>
+    <x-slot:content>
+        @include('layouts.content')
+    </x-slot:content>
+</x-yeki-layout>

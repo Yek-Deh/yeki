@@ -38,7 +38,7 @@
             <section class="section" id="section1">
                 <h1>Main Article Title</h1>
                 <hr>
-                <img src="https://via.placeholder.com/800x400" alt="Descriptive Alt Text" class="img-fluid">
+                <img src="{{asset($user->image)}}" alt="Descriptive Alt Text" class="img-fluid">
                 <p>This section contains the main content of the article. Wikipedia articles typically begin with a
                     summary that provides an overview of the topic. This summary should be concise and informative,
                     allowing readers to grasp the essence of the article quickly.</p>

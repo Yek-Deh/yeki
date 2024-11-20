@@ -18,9 +18,13 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-    Route::get('/home', function () {
-        return view('home');
-    })->name('home');
-    Route::resource('user', UserController::class);
+Route::get('/home', function () {
+    return view('home');
+})->name('home');
+Route::resource('user', UserController::class);
 
-require __DIR__.'/auth.php';
+Route::get('/create', function () {
+    return view('admin.create');
+});
+
+require __DIR__ . '/auth.php';
