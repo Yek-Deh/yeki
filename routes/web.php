@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
+use App\Models\User;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -19,7 +20,8 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::get('/home', function () {
-    return view('home');
+    $users=User::all();
+    return view('home', compact('users'));
 })->name('home');
 Route::resource('user', UserController::class);
 

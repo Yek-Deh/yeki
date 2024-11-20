@@ -18,7 +18,7 @@
                     <th scope="col">Id</th>
                     <th scope="col">Name</th>
                     <th scope="col">Email</th>
-                    <th scope="col">Handle</th>
+                    <th scope="col">Description</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -27,9 +27,7 @@
                         <th scope="row">{{$user->id}}</th>
                         <td>{{$user->name}}</td>
                         <td>{{$user->email}}</td>
-                        <td>
-
-                        </td>
+                        <td>{{$user->description}}</td>
                     </tr>
 
                 </tbody>
@@ -39,6 +37,7 @@
                 <h1>Main Article Title</h1>
                 <hr>
                 <img src="{{asset($user->image)}}" alt="Descriptive Alt Text" class="img-fluid">
+                <p>Description: {{$user->description}}</p>
                 <p>This section contains the main content of the article. Wikipedia articles typically begin with a
                     summary that provides an overview of the topic. This summary should be concise and informative,
                     allowing readers to grasp the essence of the article quickly.</p>

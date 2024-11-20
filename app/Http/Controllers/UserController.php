@@ -14,7 +14,7 @@ class UserController extends Controller
     {
         //
         $users = User::all();
-        return view('copy', compact('users'));
+        return view('all-user', compact('users'));
     }
 
     /**
