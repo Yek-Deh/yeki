@@ -20,8 +20,9 @@
                         <td class="align-content-center">{{$user->email}}</td>
                         <td class="align-content-center">{{$user->description}}</td>
                         <td class="align-content-center"><img src="{{asset($user->image)}}" alt="no image" ></td>
-                        <td class="align-content-center">
-                            <a href="{{route('user.show',$user->id)}}" class="btn btn-outline-primary">Detail</a>
+                        <td class="align-content-center p-3">
+                            <a href="{{route('user.show',$user->id)}}" class="btn btn-outline-primary m-1">Detail</a>
+                            <a href="{{route('user.edit',$user->id)}}" class="btn btn-outline-danger">Edit</a>
                         </td>
                     </tr>
                 @endforeach
