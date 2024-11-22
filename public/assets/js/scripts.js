@@ -1,54 +1,75 @@
-let activeLink = null;
 
-// Handle clicks on sidebar links
-document.querySelectorAll('.myLink').forEach(link => {
-  link.addEventListener('click', function(e) {
-    e.preventDefault(); // Prevent the default link behavior
+document.addEventListener("DOMContentLoaded", () => {
+    const sidebarLinks = document.querySelectorAll(".sidebar .nav-link");
+    const sections = document.querySelectorAll("section");
 
-    // Remove the "clicked" class from all links
-    document.querySelectorAll('.myLink').forEach(link => link.classList.remove('clicked'));
+    // Smooth scrolling on link click
+    sidebarLinks.forEach((link) => {
+        link.addEventListener("click", (event) => {
+            event.preventDefault(); // Prevent default anchor behavior
 
-    // Add the "clicked" class to the clicked link
-    this.classList.add('clicked');
-    activeLink = this; // Store the clicked link
+            const targetId = link.getAttribute("href").substring(1); // Get the target ID
 
-    // Scroll smoothly to the corresponding section
-    document.querySelector(this.getAttribute('href')).scrollIntoView({
-      behavior: 'smooth',
+            // Handle "Top" link separately
+            if (targetId === "") {
+                // Scroll to the top of the page
+                window.scrollTo({
+                    top: 0,
+                    behavior: "smooth",
+                });
+
+                // Update active class immediately
+                sidebarLinks.forEach((lnk) => lnk.classList.remove("active"));
+                link.classList.add("active");
+                return;
+            }
+
+            const targetSection = document.getElementById(targetId);
+            if (targetSection) {
+                const offsetTop = targetSection.offsetTop - 70; // Adjust for navbar
+                window.scrollTo({
+                    top: offsetTop,
+                    behavior: "smooth",
+                });
+
+                // Update active class immediately
+                sidebarLinks.forEach((lnk) => lnk.classList.remove("active"));
+                link.classList.add("active");
+            }
+        });
     });
-  });
-});
 
-// Function to check if an element is in the viewport
-function isInView(element) {
-  const rect = element.getBoundingClientRect();
-  return rect.top >= 0 && rect.bottom <= window.innerHeight; // Checks if the element is fully in view
-}
+    // Highlight the active link on scroll
+    const highlightActiveLink = () => {
+        let currentSection = "";
 
-// Handle scroll events
-window.addEventListener('scroll', function() {
-  // Loop through all sections to see which one is in view
-  document.querySelectorAll('.section').forEach(section => {
-    const link = document.querySelector(`[href="#${section.id}"]`);
+        sections.forEach((section) => {
+            const sectionTop = section.offsetTop - 80; // Adjust for navbar height
+            const sectionBottom = sectionTop + section.offsetHeight;
 
-    // If the section is in the viewport, add the "inView" class to its link
-    if (isInView(section)) {
-      link.classList.add('inView'); // Add the "inView" class to the link
-    } else {
-      link.classList.remove('inView'); // Remove the "inView" class if the section is out of view
-    }
-  });
+            if (window.scrollY >= sectionTop && window.scrollY < sectionBottom) {
+                currentSection = section.getAttribute("id");
+            }
+        });
 
-  // Make sure that only the clicked link stays highlighted
-  if (activeLink) {
-    // Get the section corresponding to the active link
-    const activeSection = document.querySelector(activeLink.getAttribute('href'));
+        sidebarLinks.forEach((link) => {
+            link.classList.remove("active");
 
-    // If the section for the clicked link is still in view, keep the "clicked" class
-    if (isInView(activeSection)) {
-      activeLink.classList.add('clicked');
-    } else {
-      activeLink.classList.remove('clicked');
-    }
-  }
+            // Highlight the link corresponding to the current section
+            if (link.getAttribute("href") === `#${currentSection}`) {
+                link.classList.add("active");
+            }
+
+            // Special case for "Top" link
+            if (!currentSection && link.getAttribute("href") === "#") {
+                link.classList.add("active");
+            }
+        });
+    };
+
+    // Trigger highlight on scroll
+    window.addEventListener("scroll", highlightActiveLink);
+
+    // Initial highlight on page load
+    highlightActiveLink();
 });

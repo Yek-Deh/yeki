@@ -21,6 +21,12 @@
             <x-text-input id="image" class="block mt-1 w-full" type="file" name="image" :value="old('image')" required autocomplete="image" />
             <x-input-error :messages="$errors->get('image')" class="mt-2" />
         </div>
+        <!-- Images -->
+        <div class="mt-4">
+            <x-input-label for="images" :value="__('Images(optional)')" />
+            <x-text-input id="images" class="block mt-1 w-full" type="file" name="images[]" :value="old('images')"  autocomplete="images"  multiple/>
+            <x-input-error :messages="$errors->get('images')" class="mt-2" />
+        </div>
         <!-- Description -->
         <div class="mt-4">
             <x-input-label for="description" :value="__('Description')" />

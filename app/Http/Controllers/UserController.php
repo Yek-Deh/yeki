@@ -14,7 +14,7 @@ class UserController extends Controller
     {
         //
         $users = User::all();
-        return view('all-user', compact('users'));
+        return view('pages.all-user', compact('users'));
     }
 
     /**
@@ -40,7 +40,7 @@ class UserController extends Controller
     {
         //
         $user=User::findOrFail($id);
-        return view('yek', compact('user'));
+        return view('pages.yek', compact('user'));
     }
 
     /**

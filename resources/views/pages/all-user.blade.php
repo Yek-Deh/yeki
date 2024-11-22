@@ -19,7 +19,7 @@
                         <td class="align-content-center">{{$user->name}}</td>
                         <td class="align-content-center">{{$user->email}}</td>
                         <td class="align-content-center">{{$user->description}}</td>
-                        <td><img src="{{asset($user->image)}}" alt="no image" width="30%"></td>
+                        <td class="align-content-center"><img src="{{asset($user->image)}}" alt="no image" ></td>
                         <td class="align-content-center">
                             <a href="{{route('user.show',$user->id)}}" class="btn btn-outline-primary">Detail</a>
                         </td>
